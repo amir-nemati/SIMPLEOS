@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KACHAL OS - The Bald Hacker OS</title>
+    <title>KACHAL OS - Tataloo Edition</title>
     <style>
         * {
             margin: 0;
@@ -214,57 +214,226 @@
             display: none;
         }
 
-        .image-controls {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-            margin-top: 10px;
-        }
-
-        .img-control-btn {
-            background: #0a0a0a;
-            border: 1px solid #ff0000;
-            color: #00ff00;
-            padding: 8px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 12px;
-        }
-
-        .img-control-btn:hover {
-            background: #ff0000;
-            color: #000;
-        }
-
-        /* Joke Section */
-        .joke-section {
-            background: linear-gradient(45deg, #000, #1a0000);
+        /* Tataloo Music Section */
+        .tataloo-section {
+            background: linear-gradient(45deg, #000, #330000);
             padding: 15px;
             border-radius: 10px;
             margin: 15px 0;
-            border: 1px solid #00ff00;
+            border: 2px solid #ff0000;
+            position: relative;
+            overflow: hidden;
         }
 
-        .joke-box {
-            background: #000;
+        .tataloo-section::before {
+            content: "🎵 تتلو 🎵";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: rgba(255, 0, 0, 0.3);
+            font-size: 40px;
+            font-weight: bold;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
+        .tataloo-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tataloo-avatar {
+            width: 50px;
+            height: 50px;
+            background: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .tataloo-title {
+            color: #ff0000;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .tataloo-player {
+            background: #0a0a0a;
             padding: 15px;
-            border-right: 5px solid #ff0000;
-            color: #00ff00;
-            font-family: 'Courier New';
+            border-radius: 10px;
             margin: 10px 0;
-            border-radius: 5px;
-            min-height: 70px;
         }
 
-        .joke-button {
+        .tataloo-song {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            margin: 5px 0;
+            background: #1a1a1a;
+            border: 1px solid #ff0000;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tataloo-song:hover {
+            background: #ff0000;
+            transform: translateX(-5px);
+        }
+
+        .tataloo-song.playing {
+            background: #ff0000;
+            border-color: #00ff00;
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        .song-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .song-number {
+            width: 30px;
+            height: 30px;
+            background: #000;
+            border: 1px solid #00ff00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff00;
+        }
+
+        .song-title {
+            color: #00ff00;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .song-duration {
+            color: #ff0000;
+            font-size: 14px;
+        }
+
+        .play-button {
+            width: 40px;
+            height: 40px;
+            background: #000;
+            border: 2px solid #00ff00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff00;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .play-button:hover {
+            background: #00ff00;
+            color: #000;
+            transform: scale(1.2);
+        }
+
+        .tataloo-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 50px;
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            background: #000;
+            border: 2px solid #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff0000;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
             background: #ff0000;
             color: #000;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
+            transform: scale(1.2);
+            border-color: #00ff00;
+        }
+
+        .tataloo-now-playing {
+            margin-top: 15px;
+            padding: 15px;
+            background: #000;
+            border: 1px solid #00ff00;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .now-playing-title {
+            color: #ff0000;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .now-playing-song {
+            color: #00ff00;
+            font-size: 20px;
             font-weight: bold;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .tataloo-progress {
             width: 100%;
+            height: 5px;
+            background: #1a1a1a;
+            border-radius: 5px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff0000, #00ff00);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .tataloo-lyrics {
+            margin-top: 15px;
+            padding: 15px;
+            background: #0a0a0a;
+            border: 1px dashed #ff0000;
+            border-radius: 10px;
+            color: #00ff00;
+            font-family: 'Courier New';
+            font-size: 12px;
+            max-height: 100px;
+            overflow-y: auto;
         }
 
         /* Apps Grid */
@@ -563,54 +732,6 @@
             min-height: 70px;
         }
 
-        /* Music Player */
-        .music-player {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .music-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .music-status {
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-
-        .music-controls {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .music-control-btn {
-            width: 50px;
-            height: 50px;
-            background: #1a1a1a;
-            border: 1px solid #ff0000;
-            color: #00ff00;
-            cursor: pointer;
-            border-radius: 50%;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .music-control-btn:hover {
-            background: #ff0000;
-            color: #000;
-            transform: scale(1.1);
-        }
-
         /* Clock */
         .clock {
             font-family: 'Courier New', monospace;
@@ -620,79 +741,6 @@
             padding: 5px 15px;
             border: 1px solid #00ff00;
             border-radius: 30px;
-        }
-
-        /* Progress Bar */
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: #1a1a1a;
-            border: 1px solid #ff0000;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff0000, #00ff00);
-            width: 0%;
-            transition: width 0.3s;
-        }
-
-        /* Toggle Switch */
-        .toggle-switch {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 10px 0;
-        }
-
-        .toggle-label {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 30px;
-        }
-
-        .toggle-label input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .toggle-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #1a1a1a;
-            border: 1px solid #ff0000;
-            transition: .3s;
-            border-radius: 30px;
-        }
-
-        .toggle-slider:before {
-            position: absolute;
-            content: "";
-            height: 24px;
-            width: 24px;
-            left: 3px;
-            bottom: 2px;
-            background-color: #ff0000;
-            transition: .3s;
-            border-radius: 50%;
-        }
-
-        input:checked + .toggle-slider {
-            background-color: #00ff00;
-        }
-
-        input:checked + .toggle-slider:before {
-            transform: translateX(30px);
-            background-color: #000;
         }
     </style>
 </head>
@@ -716,7 +764,7 @@
                 <div class="user-info">
                     <h3>Erfan Shakouri</h3>
                     <p>⚡ The Bald Hacker ⚡</p>
-                    <span class="badge">👑 KING OF BALD</span>
+                    <span class="badge">🎵 TATALOO FAN 🎵</span>
                 </div>
             </div>
 
@@ -736,35 +784,95 @@
                 </div>
             </div>
 
-            <!-- Image Upload Section (960x1280) -->
-            <div class="upload-section">
-                <div class="section-title">
-                    <span>🖼️</span>
-                    <span>WALLPAPER UPLOAD (960x1280)</span>
+            <!-- Tataloo Music Section -->
+            <div class="tataloo-section">
+                <div class="tataloo-header">
+                    <div class="tataloo-avatar">🎤</div>
+                    <div class="tataloo-title">TATALOO</div>
                 </div>
-                <div class="image-preview" id="imagePreview">
-                    📸 Drop your image here
-                </div>
-                <input type="file" id="bgImage" accept="image/*" onchange="uploadImage(this)">
-                <label for="bgImage" class="file-label">📁 CHOOSE IMAGE</label>
                 
-                <div class="image-controls">
-                    <button class="img-control-btn" onclick="setBackgroundSize('cover')">COVER</button>
-                    <button class="img-control-btn" onclick="setBackgroundSize('contain')">CONTAIN</button>
-                    <button class="img-control-btn" onclick="resetBackground()">RESET</button>
-                </div>
-            </div>
+                <div class="tataloo-player">
+                    <!-- Song List -->
+                    <div class="tataloo-song" id="song1" onclick="playTataloo(0)">
+                        <div class="song-info">
+                            <div class="song-number">1</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Man Ba Toam</div>
+                                <div class="song-duration">3:45</div>
+                            </div>
+                        </div>
+                        <div class="play-button" id="playBtn0">▶️</div>
+                    </div>
 
-            <!-- Joke Section -->
-            <div class="joke-section">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <span>😂 BALD JOKES</span>
-                    <span style="color: #ff0000;" id="jokeCounter">1/10</span>
+                    <div class="tataloo-song" id="song2" onclick="playTataloo(1)">
+                        <div class="song-info">
+                            <div class="song-number">2</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Jange</div>
+                                <div class="song-duration">4:20</div>
+                            </div>
+                        </div>
+                        <div class="play-button" id="playBtn1">▶️</div>
+                    </div>
+
+                    <div class="tataloo-song" id="song3" onclick="playTataloo(2)">
+                        <div class="song-info">
+                            <div class="song-number">3</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Ashegham</div>
+                                <div class="song-duration">3:55</div>
+                            </div>
+                        </div>
+                        <div class="play-button" id="playBtn2">▶️</div>
+                    </div>
+
+                    <div class="tataloo-song" id="song4" onclick="playTataloo(3)">
+                        <div class="song-info">
+                            <div class="song-number">4</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Darya</div>
+                                <div class="song-duration">4:10</div>
+                            </div>
+                        </div>
+                        <div class="play-button" id="playBtn3">▶️</div>
+                    </div>
+
+                    <div class="tataloo-song" id="song5" onclick="playTataloo(4)">
+                        <div class="song-info">
+                            <div class="song-number">5</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Behtarin</div>
+                                <div class="song-duration">3:30</div>
+                            </div>
+                        </div>
+                        <div class="play-button" id="playBtn4">▶️</div>
+                    </div>
                 </div>
-                <div class="joke-box" id="jokeBox">
-                    Why don't bald guys wear hats? They're afraid their hair will get messed up!
+
+                <!-- Player Controls -->
+                <div class="tataloo-controls">
+                    <div class="control-btn" onclick="previousSong()">⏮️</div>
+                    <div class="control-btn" onclick="togglePlayPause()">⏸️</div>
+                    <div class="control-btn" onclick="nextSong()">⏭️</div>
                 </div>
-                <button class="joke-button" onclick="nextJoke()">👉 NEXT JOKE</button>
+
+                <!-- Now Playing -->
+                <div class="tataloo-now-playing">
+                    <div class="now-playing-title">🎵 NOW PLAYING</div>
+                    <div class="now-playing-song" id="nowPlaying">Amir Tataloo - Man Ba Toam</div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="tataloo-progress">
+                    <div class="progress-bar" id="musicProgress" style="width: 0%;"></div>
+                </div>
+
+                <!-- Lyrics -->
+                <div class="tataloo-lyrics" id="tatalooLyrics">
+                    🎤 من با توام، حتی اگه دنیا هم نباشه<br>
+                    من با توام، حتی اگه فردا هم نیاد...<br>
+                    تتلو - من با توام
+                </div>
             </div>
 
             <!-- Apps Grid -->
@@ -789,9 +897,9 @@
                     <span>🎮</span>
                     <span>GAMES</span>
                 </div>
-                <div class="app-icon-item" onclick="openApp('music')">
+                <div class="app-icon-item" onclick="openApp('tataloo')">
                     <span>🎵</span>
-                    <span>MUSIC</span>
+                    <span>TATALOO</span>
                 </div>
                 <div class="app-icon-item" onclick="openApp('hacktools')">
                     <span>🔪</span>
@@ -818,21 +926,17 @@
                 <span>⌨️</span>
                 <span>Terminal</span>
             </div>
+            <div class="desktop-icon" ondblclick="openApp('tataloo')">
+                <span>🎵</span>
+                <span>Tataloo</span>
+            </div>
             <div class="desktop-icon" ondblclick="openApp('games')">
                 <span>🎮</span>
                 <span>Games</span>
             </div>
-            <div class="desktop-icon" ondblclick="openApp('music')">
-                <span>🎵</span>
-                <span>Music</span>
-            </div>
             <div class="desktop-icon" ondblclick="openApp('hacktools')">
                 <span>🔪</span>
                 <span>Hack Tools</span>
-            </div>
-            <div class="desktop-icon" ondblclick="openApp('settings')">
-                <span>⚙️</span>
-                <span>Settings</span>
             </div>
         </div>
 
@@ -905,7 +1009,7 @@
             </div>
             <div class="window-content">
                 <div class="notepad">
-                    <textarea id="noteContent" placeholder="Write your bald notes here..."></textarea>
+                    <textarea id="noteContent" placeholder="Write your notes here..."></textarea>
                     <button onclick="saveNote()">💾 SAVE NOTE</button>
                 </div>
             </div>
@@ -945,40 +1049,85 @@
                 </div>
             </div>
             <div class="window-content">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="gameProgress" style="width: 0%;"></div>
-                </div>
                 <button class="game-btn" onclick="playDice()">🎲 ROLL DICE</button>
                 <button class="game-btn" onclick="playCoin()">🪙 FLIP COIN</button>
                 <button class="game-btn" onclick="playNumber()">🔢 GUESS NUMBER</button>
-                <button class="game-btn" onclick="playRPS()">✂️ ROCK PAPER SCISSORS</button>
                 <div class="game-result" id="gameResult">🎮 Choose a game!</div>
             </div>
         </div>
 
-        <!-- Music Window -->
-        <div class="window" id="musicWindow">
+        <!-- Tataloo Music Window -->
+        <div class="window" id="tatalooWindow">
             <div class="window-header">
-                <span>🎵 KACHAL MUSIC</span>
+                <span>🎵 TATALOO MUSIC</span>
                 <div class="window-controls">
-                    <span onclick="minimizeWindow('musicWindow')">🗕</span>
-                    <span onclick="maximizeWindow('musicWindow')">🗖</span>
-                    <span onclick="closeWindow('musicWindow')">✖</span>
+                    <span onclick="minimizeWindow('tatalooWindow')">🗕</span>
+                    <span onclick="maximizeWindow('tatalooWindow')">🗖</span>
+                    <span onclick="closeWindow('tatalooWindow')">✖</span>
                 </div>
             </div>
             <div class="window-content">
-                <div class="music-player">
-                    <div class="music-icon">🎵</div>
-                    <div class="music-status" id="musicStatus">Now Playing: Bald Rap</div>
-                    <div class="music-controls">
-                        <button class="music-control-btn" onclick="playMusic('prev')">⏮️</button>
-                        <button class="music-control-btn" onclick="playMusic('play')">▶️</button>
-                        <button class="music-control-btn" onclick="playMusic('pause')">⏸️</button>
-                        <button class="music-control-btn" onclick="playMusic('next')">⏭️</button>
+                <div class="tataloo-player">
+                    <!-- Same song list as start menu -->
+                    <div class="tataloo-song" onclick="playTataloo(0)">
+                        <div class="song-info">
+                            <div class="song-number">1</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Man Ba Toam</div>
+                                <div class="song-duration">3:45</div>
+                            </div>
+                        </div>
                     </div>
-                    <div style="margin-top: 20px; color: #ff0000;" id="playlist">
-                        🎤 Bald Rap | 🤘 Bald Rock | 🎹 Bald Pop
+                    <div class="tataloo-song" onclick="playTataloo(1)">
+                        <div class="song-info">
+                            <div class="song-number">2</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Jange</div>
+                                <div class="song-duration">4:20</div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="tataloo-song" onclick="playTataloo(2)">
+                        <div class="song-info">
+                            <div class="song-number">3</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Ashegham</div>
+                                <div class="song-duration">3:55</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tataloo-song" onclick="playTataloo(3)">
+                        <div class="song-info">
+                            <div class="song-number">4</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Darya</div>
+                                <div class="song-duration">4:10</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tataloo-song" onclick="playTataloo(4)">
+                        <div class="song-info">
+                            <div class="song-number">5</div>
+                            <div>
+                                <div class="song-title">Amir Tataloo - Behtarin</div>
+                                <div class="song-duration">3:30</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tataloo-controls">
+                    <div class="control-btn" onclick="previousSong()">⏮️</div>
+                    <div class="control-btn" onclick="togglePlayPause()">⏸️</div>
+                    <div class="control-btn" onclick="nextSong()">⏭️</div>
+                </div>
+
+                <div class="tataloo-now-playing">
+                    <div class="now-playing-song" id="nowPlaying2">Amir Tataloo - Man Ba Toam</div>
+                </div>
+
+                <div class="tataloo-progress">
+                    <div class="progress-bar" id="musicProgress2" style="width: 0%;"></div>
                 </div>
             </div>
         </div>
@@ -1012,20 +1161,6 @@
                 </div>
             </div>
             <div class="window-content">
-                <div class="toggle-switch">
-                    <span>🔊 SOUND EFFECTS</span>
-                    <label class="toggle-label">
-                        <input type="checkbox" id="soundToggle" checked>
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
-                <div class="toggle-switch">
-                    <span>🎨 HACKER MODE</span>
-                    <label class="toggle-label">
-                        <input type="checkbox" id="hackerMode">
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
                 <button class="game-btn" onclick="clearAllData()">🗑️ CLEAR ALL DATA</button>
                 <button class="game-btn" onclick="exportNotes()">📤 EXPORT NOTES</button>
             </div>
@@ -1042,7 +1177,7 @@
                 </div>
             </div>
             <div class="window-content">
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;" id="galleryGrid">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
                     <div style="background: linear-gradient(45deg, #ff0000, #000); height: 150px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">BALD #1</div>
                     <div style="background: linear-gradient(45deg, #00ff00, #000); height: 150px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">BALD #2</div>
                     <div style="background: linear-gradient(45deg, #0000ff, #000); height: 150px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">BALD #3</div>
@@ -1057,25 +1192,48 @@
         let calcValue = '0';
         let calcOperator = null;
         let calcPrevValue = null;
-        let currentMusic = 0;
         let hackCount = 1337;
         let baldLevel = 99;
         let coinCount = 420;
         
-        const musicList = ['Bald Rap', 'Bald Rock', 'Bald Pop', 'Bald Metal'];
-        const jokes = [
-            "Why don't bald guys wear hats? They're afraid their hair will get messed up! 😂",
-            "A bald man walks into a bar... with a comb in his hand! 🧴",
-            "What do you call a bald person with a hat? A liar! 🧢",
-            "Why are bald people good at soccer? They always head the ball! ⚽",
-            "Bald guys are like stars - they shine bright! ⭐",
-            "What's a bald man's favorite game? Hair-oh-seven! 🎮",
-            "Why did the bald man paint his head yellow? To look like a hard-boiled egg! 🥚",
-            "Baldness is hereditary - it skips a generation... your father's! 👨‍🦲",
-            "What do you say to a bald man? Nice hat! 😜",
-            "Bald guys have the cleanest heads - no dandruff! ✨"
+        // Tataloo Music Variables
+        let currentSong = 0;
+        let isPlaying = true;
+        let progressInterval;
+        let currentProgress = 0;
+        
+        const tatalooSongs = [
+            {
+                title: "Amir Tataloo - Man Ba Toam",
+                duration: "3:45",
+                lyrics: "🎤 من با توام، حتی اگه دنیا هم نباشه\nمن با توام، حتی اگه فردا هم نیاد...\nتتلو - من با توام",
+                color: "#ff0000"
+            },
+            {
+                title: "Amir Tataloo - Jange",
+                duration: "4:20",
+                lyrics: "🎤 این جنگه، جنگه، جنگه\nتتلو - جنگه",
+                color: "#00ff00"
+            },
+            {
+                title: "Amir Tataloo - Ashegham",
+                duration: "3:55",
+                lyrics: "🎤 عاشقم، عاشقم، عاشقم\nتتلو - عاشقم",
+                color: "#0000ff"
+            },
+            {
+                title: "Amir Tataloo - Darya",
+                duration: "4:10",
+                lyrics: "🎤 دریا، دریا، دریا\nتتلو - دریا",
+                color: "#00ffff"
+            },
+            {
+                title: "Amir Tataloo - Behtarin",
+                duration: "3:30",
+                lyrics: "🎤 بهترین، بهترین، بهترین\nتتلو - بهترین",
+                color: "#ff00ff"
+            }
         ];
-        let currentJokeIndex = 0;
 
         // Toggle Start Menu
         function toggleStartMenu() {
@@ -1121,46 +1279,92 @@
             }
         }
 
-        // Image Upload
-        function uploadImage(input) {
-            if (input.files && input.files[0]) {
-                let reader = new FileReader();
-                reader.onload = function(e) {
-                    document.body.style.backgroundImage = "url('" + e.target.result + "')";
-                    document.body.style.backgroundSize = "cover";
-                    document.body.style.backgroundPosition = "center";
-                    
-                    let preview = document.getElementById('imagePreview');
-                    preview.style.backgroundImage = "url('" + e.target.result + "')";
-                    preview.style.backgroundSize = "cover";
-                    preview.style.backgroundPosition = "center";
-                    preview.innerHTML = '';
-                    
-                    // Save to localStorage
-                    localStorage.setItem('kachalBg', e.target.result);
-                    updateStats('upload');
+        // Tataloo Music Functions
+        function playTataloo(index) {
+            // Reset previous song highlight
+            for (let i = 0; i < 5; i++) {
+                let songElem = document.getElementById('song' + (i+1));
+                let playBtn = document.getElementById('playBtn' + i);
+                if (songElem) {
+                    songElem.classList.remove('playing');
                 }
-                reader.readAsDataURL(input.files[0]);
+                if (playBtn) {
+                    playBtn.textContent = '▶️';
+                }
+            }
+            
+            // Highlight current song
+            currentSong = index;
+            let currentSongElem = document.getElementById('song' + (index+1));
+            let currentPlayBtn = document.getElementById('playBtn' + index);
+            
+            if (currentSongElem) {
+                currentSongElem.classList.add('playing');
+            }
+            if (currentPlayBtn) {
+                currentPlayBtn.textContent = '⏸️';
+            }
+            
+            // Update now playing
+            document.getElementById('nowPlaying').textContent = tatalooSongs[index].title;
+            let nowPlaying2 = document.getElementById('nowPlaying2');
+            if (nowPlaying2) {
+                nowPlaying2.textContent = tatalooSongs[index].title;
+            }
+            
+            // Update lyrics
+            document.getElementById('tatalooLyrics').textContent = tatalooSongs[index].lyrics;
+            
+            // Start progress animation
+            startProgress();
+            
+            // Add hack effect
+            hackCount += 10;
+            updateStats('tataloo');
+        }
+
+        function togglePlayPause() {
+            isPlaying = !isPlaying;
+            let playBtn = document.getElementById('playBtn' + currentSong);
+            if (playBtn) {
+                playBtn.textContent = isPlaying ? '⏸️' : '▶️';
+            }
+            
+            if (isPlaying) {
+                startProgress();
+            } else {
+                clearInterval(progressInterval);
             }
         }
 
-        function setBackgroundSize(size) {
-            document.body.style.backgroundSize = size;
+        function nextSong() {
+            let nextIndex = (currentSong + 1) % tatalooSongs.length;
+            playTataloo(nextIndex);
         }
 
-        function resetBackground() {
-            document.body.style.backgroundImage = 'none';
-            document.getElementById('imagePreview').style.backgroundImage = 'none';
-            document.getElementById('imagePreview').innerHTML = '📸 Drop your image here';
-            localStorage.removeItem('kachalBg');
+        function previousSong() {
+            let prevIndex = (currentSong - 1 + tatalooSongs.length) % tatalooSongs.length;
+            playTataloo(prevIndex);
         }
 
-        // Jokes
-        function nextJoke() {
-            currentJokeIndex = (currentJokeIndex + 1) % jokes.length;
-            document.getElementById('jokeBox').textContent = jokes[currentJokeIndex];
-            document.getElementById('jokeCounter').textContent = (currentJokeIndex + 1) + '/10';
-            updateStats('joke');
+        function startProgress() {
+            clearInterval(progressInterval);
+            currentProgress = 0;
+            
+            progressInterval = setInterval(() => {
+                if (isPlaying) {
+                    currentProgress += 0.5;
+                    if (currentProgress >= 100) {
+                        currentProgress = 0;
+                        nextSong();
+                    }
+                    document.getElementById('musicProgress').style.width = currentProgress + '%';
+                    let progress2 = document.getElementById('musicProgress2');
+                    if (progress2) {
+                        progress2.style.width = currentProgress + '%';
+                    }
+                }
+            }, 200);
         }
 
         // Browser
@@ -1229,7 +1433,7 @@
                 
                 let output = '';
                 if (command === 'help') {
-                    output = 'Commands: help, whoami, date, clear, bald, hack, joke, stats, fortune';
+                    output = 'Commands: help, whoami, date, clear, bald, hack, tataloo, play, next, prev';
                 } 
                 else if (command === 'whoami') {
                     output = 'Erfan Shakouri - The Bald Hacker';
@@ -1249,15 +1453,20 @@
                     hackCount += 100;
                     output = '💀 HACKING... SUCCESS! Total hacks: ' + hackCount;
                 }
-                else if (command === 'joke') {
-                    output = jokes[Math.floor(Math.random() * jokes.length)];
+                else if (command === 'tataloo') {
+                    output = '🎵 Now playing: ' + tatalooSongs[currentSong].title;
                 }
-                else if (command === 'stats') {
-                    output = 'Hacks: ' + hackCount + ' | Bald: ' + baldLevel + '% | Coins: ' + coinCount;
+                else if (command === 'play') {
+                    togglePlayPause();
+                    output = '🎵 Music ' + (isPlaying ? 'resumed' : 'paused');
                 }
-                else if (command === 'fortune') {
-                    let fortunes = ['You will be more bald tomorrow', 'A wild hacker appears', 'Your bald head shines bright', 'Coin +100', 'Hack the planet!'];
-                    output = fortunes[Math.floor(Math.random() * fortunes.length)];
+                else if (command === 'next') {
+                    nextSong();
+                    output = '🎵 Next song: ' + tatalooSongs[currentSong].title;
+                }
+                else if (command === 'prev') {
+                    previousSong();
+                    output = '🎵 Previous song: ' + tatalooSongs[currentSong].title;
                 }
                 else {
                     output = 'Command not found: ' + command;
@@ -1275,7 +1484,6 @@
             let dice = Math.floor(Math.random() * 6) + 1;
             coinCount += dice * 10;
             document.getElementById('gameResult').innerHTML = '🎲 You rolled: ' + dice + '<br>💰 Won: ' + (dice * 10) + ' coins';
-            document.getElementById('gameProgress').style.width = (dice * 16.66) + '%';
             updateStats('game');
         }
 
@@ -1292,35 +1500,6 @@
             coinCount += number * 5;
             document.getElementById('gameResult').innerHTML = '🔢 Number: ' + number + '<br>💰 Won: ' + (number * 5) + ' coins';
             updateStats('game');
-        }
-
-        function playRPS() {
-            let choices = ['Rock', 'Paper', 'Scissors'];
-            let computer = choices[Math.floor(Math.random() * 3)];
-            coinCount += 30;
-            document.getElementById('gameResult').innerHTML = '✂️ Computer chose: ' + computer + '<br>💰 Won: 30 coins';
-            updateStats('game');
-        }
-
-        // Music
-        function playMusic(action) {
-            let status = document.getElementById('musicStatus');
-            
-            if (action === 'play') {
-                status.innerHTML = '▶️ Now Playing: ' + musicList[currentMusic];
-            } 
-            else if (action === 'pause') {
-                status.innerHTML = '⏸️ Paused: ' + musicList[currentMusic];
-            }
-            else if (action === 'next') {
-                currentMusic = (currentMusic + 1) % musicList.length;
-                status.innerHTML = '⏭️ Now Playing: ' + musicList[currentMusic];
-            }
-            else if (action === 'prev') {
-                currentMusic = (currentMusic - 1 + musicList.length) % musicList.length;
-                status.innerHTML = '⏮️ Now Playing: ' + musicList[currentMusic];
-            }
-            updateStats('music');
         }
 
         // Hack Tools
@@ -1377,19 +1556,13 @@
 
         // Load saved data
         window.onload = function() {
-            let savedBg = localStorage.getItem('kachalBg');
-            if (savedBg) {
-                document.body.style.backgroundImage = "url('" + savedBg + "')";
-                document.body.style.backgroundSize = "cover";
-                document.getElementById('imagePreview').style.backgroundImage = "url('" + savedBg + "')";
-                document.getElementById('imagePreview').style.backgroundSize = "cover";
-                document.getElementById('imagePreview').innerHTML = '';
-            }
-            
             let savedNote = localStorage.getItem('kachalNote');
             if (savedNote) {
                 document.getElementById('noteContent').value = savedNote;
             }
+            
+            // Start playing first song
+            playTataloo(0);
         }
 
         // Close menu when clicking outside
